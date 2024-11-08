@@ -1,12 +1,17 @@
 const express = require('express')
 const app = express()
 const port = 3001
+const cors = require('cors');
 
 app.use(express.json());
 
+app.use(cors({
+  origin: 'http://localhost:3000',
+}));
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
-})
+});
 
 app.post('/calculate', (req, res) => {
   const { value1, value2, operation } = req.body;
@@ -32,7 +37,10 @@ app.post('/calculate', (req, res) => {
     default:
       return res.status(400).send('Operação inválida');
   }
-  res.send(`O resultado é ${result}`)
+  res.json({
+    message: `O resultado é ${result}`,
+    result: result
+  })
 })
 
 app.listen(port, () => {

@@ -21,7 +21,7 @@ const Calculator = () => {
         operation,
       });
 
-      setResult(response.data.result);
+      setResult(response.data.message);
       setError('');
     } catch (err) {
       setError('Erro ao realizar o cálculo');
@@ -53,7 +53,7 @@ const Calculator = () => {
         <button onClick={() => handleOperation('divide')}>Dividir</button>
       </div>
 
-      {result !== null && <p className="result">Resultado: {result}</p>}
+      {result !== null && <p className="result">{result}</p>}
     </div>
   );
 };
