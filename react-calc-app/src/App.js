@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Calculator from './components/Calculator';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/calculator" element={<Calculator />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </BrowserRouter>

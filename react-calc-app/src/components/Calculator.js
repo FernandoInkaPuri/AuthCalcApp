@@ -1,14 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
 const Calculator = () => {
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+  
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+  }, [navigate]);
 
   const handleOperation = async (operation) => {
+    const token = localStorage.getItem('token');
     if (!value1 || !value2) {
       setError('Todos os campos são obrigatórios');
       return;
@@ -19,7 +30,7 @@ const Calculator = () => {
         value1: parseFloat(value1.replace(',', '.')),
         value2: parseFloat(value2.replace(',', '.')),
         operation,
-      });
+      }, { headers: { Authorization: `Bearer ${token}` } } );
 
       setResult(response.data.message);
       setError('');
