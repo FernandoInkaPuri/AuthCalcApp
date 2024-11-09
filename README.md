@@ -20,11 +20,14 @@ Esta é uma aplicação de calculadora web que permite aos usuários realizar op
 
 ## Como Rodar o Projeto
 
-### 1. **Clonando o repositório**
-
-Clone este repositório para sua máquina local:
+#### 1. Clone este repositório para sua máquina:
 
 ```bash
 git clone https://github.com/FernandoInkaPuri/AuthCalcApp.git
-cd AuthCalcApp
+```
+#### 2. Entre na pasta com o comando `cd AuthCalcApp`
+
+#### 3. Suba a aplicação com o docker compose
+```
 docker compose up
+```
