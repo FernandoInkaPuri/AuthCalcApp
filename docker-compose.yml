@@ -12,5 +12,5 @@ services:
     ports:
       - "3001:3001"
     environment:
-      - JWT_SECRET=''
+      - JWT_SECRET=Math
       - JWT_EXPIRES_IN=1h
